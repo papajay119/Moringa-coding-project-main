@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Senpai Shelf | Anime Merch Shop</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="store.css">
+</head>
+<body class="shop">
+  <a class="skip-link" href="#main">Skip to the main content</a>
+
+  <!-- 1. INFO STRIP -->
+  <div class="demo-strip">Course project demo. This is not an official or commercial shop and nothing here is for sale.</div>
+
+  <!-- 2. HEADER with a Shop menu (opens with a click or the keyboard, so it works on phones) -->
+  <header class="topbar">
+    <a class="brand" href="#top">Senpai Shelf</a>
+    <nav aria-label="Main">
+      <a href="#top">Home</a>
+      <details class="menu">
+        <summary>Shop</summary>
+        <div class="mega">
+          <div>
+            <h3>All goodies</h3>
+            <a href="#main" data-filter="all">All items</a>
+            <a href="#main" data-filter="posters">Posters</a>
+            <a href="#main" data-filter="standees">Standees</a>
+            <a href="#main" data-filter="pins">Pins</a>
+            <a href="#main" data-filter="hoodies">Hoodies</a>
+          </div>
+          <div>
+            <h3>More to browse</h3>
+            <a href="#main" data-filter="figurines">Figurines</a>
+            <a href="#main" data-filter="stickers">Stickers</a>
+            <a href="#main" data-filter="keychains">Keychains</a>
+            <a href="#main" data-filter="tshirts">T-shirts</a>
+          </div>
+          <div class="mega-note">
+            <h3>By anime</h3>
+            <a href="#anime">See every series</a>
+          </div>
+        </div>
+      </details>
+      <a href="#anime">Anime</a>
+      <a href="#delivery">Delivery</a>
+      <button type="button" id="cart-open" class="cart-btn">Cart (<span id="cart-count">0</span>)</button>
+    </nav>
+  </header>
+
+  <!-- 3. HERO -->
+  <section class="hero" id="top">
+    <h1>Senpai Shelf | Anime Merch Shop</h1>
+    <p class="note">For anime fans who want to show off what they love. We sell posters, standees, pins and hoodies with original anime-style designs, shipped to your door.</p>
+    <a class="button" href="#main">Shop the shelf</a>
+  </section>
+
+  <!-- 4. TWO PROMO CARDS -->
+  <section class="promos" aria-label="Featured">
+    <article class="promo">
+      <h2>Posters and standees</h2>
+      <p>Cover your wall and your desk with your favourite characters.</p>
+      <a class="button ghost" href="#main" data-filter="posters">Shop posters</a>
+      <a class="button ghost" href="#main" data-filter="standees">Shop standees</a>
+    </article>
+    <article class="promo promo-2">
+      <h2>Pins and hoodies</h2>
+      <p>Small pins for your bag, a big hoodie for the cold days.</p>
+      <a class="button ghost" href="#main" data-filter="pins">Shop pins</a>
+      <a class="button ghost" href="#main" data-filter="hoodies">Shop hoodies</a>
+    </article>
+  </section>
+
+  <!-- 5. BROWSE OUR CATEGORIES -->
+  <section class="cats" aria-labelledby="cats-title">
+    <h2 id="cats-title">Browse our categories</h2>
+    <div class="cat-grid">
+      <a class="cat-tile" href="#main" data-filter="posters">Posters</a>
+      <a class="cat-tile" href="#main" data-filter="standees">Standees</a>
+      <a class="cat-tile" href="#main" data-filter="pins">Pins</a>
+      <a class="cat-tile" href="#main" data-filter="hoodies">Hoodies</a>
+      <a class="cat-tile" href="#main" data-filter="figurines">Figurines</a>
+      <a class="cat-tile" href="#main" data-filter="stickers">Stickers</a>
+      <a class="cat-tile" href="#main" data-filter="keychains">Keychains</a>
+      <a class="cat-tile" href="#main" data-filter="tshirts">T-shirts</a>
+    </div>
+  </section>
+
+   <!-- 6. SHOP BY ANIME: click a series to change the page background -->
+  <section class="anime" id="anime" aria-labelledby="anime-title">
+    <h2 id="anime-title">Shop by anime</h2>
+    <p class="note">Click a series to change the page background to it. Items for each one are coming soon.</p>
+    <div class="anime-grid">
+      <button type="button" class="anime-card" data-anime="jujutsu" aria-pressed="false"><h3>Jujutsu Kaisen</h3><p>We offer: posters, standees and hoodies.</p></button>
+      <button type="button" class="anime-card" data-anime="demon-slayer" aria-pressed="false"><h3>Demon Slayer</h3><p>We offer: standees, pins and posters.</p></button>
+      <button type="button" class="anime-card" data-anime="hero" aria-pressed="false"><h3>My Hero Academia</h3><p>We offer: pins, posters and hoodies.</p></button>
+      <button type="button" class="anime-card" data-anime="bleach" aria-pressed="false"><h3>Bleach</h3><p>We offer: hoodies, posters and standees.</p></button>
+    </div>
+    <p id="anime-status" class="note" role="status"></p>
+    <button type="button" id="anime-reset" class="button ghost" hidden>Clear the background</button>
+  </section>
+
+  <!-- 7. TOP SELLERS GRID -->
+  <main id="main">
+    <section class="card" aria-labelledby="items-title">
+      <div class="shop-head">
+        <h2 id="items-title">What we sell</h2>
+        <div class="filter">
+          <label for="category-filter">Filter by type</label>
+          <select id="category-filter">
+            <option value="all">All items</option>
+            <option value="posters">Posters</option>
+            <option value="standees">Standees</option>
+            <option value="pins">Pins</option>
+            <option value="hoodies">Hoodies</option>
+            <option value="figurines">Figurines</option>
+            <option value="stickers">Stickers</option>
+            <option value="keychains">Keychains</option>
+            <option value="tshirts">T-shirts</option>
+          </select>
+        </div>
+      </div>
+      <p class="note">Items tagged "Example from the web" use names and prices from the public Otaku Vault Kenya listing, for practice only.</p>
+      <p id="items-status" class="status" role="status" aria-live="polite"></p>
+      <ul id="items-list" class="list"></ul>
+    </section>
+
+    <section class="info" id="delivery" aria-labelledby="delivery-title">
+      <h2 id="delivery-title">Delivery and returns</h2>
+      <div class="info-grid">
+        <p><strong>Shipping</strong> Takes 3 to 7 days.</p>
+        <p><strong>Returns</strong> Accepted within 14 days.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- 8. FOOTER -->
+  <footer>
+    <div class="foot-grid">
+      <div>
+        <h3>Senpai Shelf</h3>
+        <p>An anime merch shop made as a course project. Not an official or commercial website.</p>
+      </div>
+      <div>
+        <h3>Useful links</h3>
+        <ul>
+          <li><a href="#top">Home</a></li>
+          <li><a href="#main">Shop</a></li>
+          <li><a href="#anime">Anime</a></li>
+          <li><a href="#delivery">Delivery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact (demo)</h3>
+        <ul>
+          <li>Phone: <a href="tel:+254700000000">+254 700 000 000</a></li>
+          <li>Email: <a href="mailto:hello@senpaishelf.example">hello@senpaishelf.example</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot-note">Made by Enock for Trailblazer: AI Product Studio. Practice pages: <a href="practice/index.html">Town forecast card</a></p>
+  </footer>
+
+  <!-- ITEM POP-UP -->
+  <dialog id="gallery" aria-labelledby="gallery-title">
+    <div class="gallery-head">
+      <h2 id="gallery-title">Poster set</h2>
+      <button type="button" id="gallery-close">Close</button>
+    </div>
+    <div id="gallery-grid" class="gallery-grid"></div>
+  </dialog>
+
+  <!-- CART -->
+  <dialog id="cart" aria-labelledby="cart-title">
+    <div class="gallery-head">
+      <h2 id="cart-title">Your cart</h2>
+      <button type="button" id="cart-close">Close</button>
+    </div>
+    <ul id="cart-list" class="cart-list"></ul>
+    <p id="cart-total" class="cart-total"></p>
+    <a class="button" id="cart-checkout" href="checkout.html">Go to checkout</a>
+  </dialog>
+  <!-- ITEM VIEWER: one item alone, with zoom and a 3D tilt that follows the mouse -->
+  <dialog id="viewer" aria-labelledby="viewer-title">
+    <div class="gallery-head">
+      <h2 id="viewer-title">Item</h2>
+      <button type="button" id="viewer-close">Close</button>
+    </div>
+    <div id="viewer-stage" class="viewer-stage">
+      <div id="viewer-frame" class="viewer-frame"><img id="viewer-img" alt=""></div>
+    </div>
+    <p class="note viewer-hint">Move your mouse over the picture to tilt it. Scroll or use the buttons to zoom.</p>
+    <div class="viewer-controls">
+      <button type="button" id="zoom-out" class="button ghost">&minus; Zoom out</button>
+      <span id="zoom-level" class="zoom-level">100%</span>
+      <button type="button" id="zoom-in" class="button ghost">+ Zoom in</button>
+      <button type="button" id="zoom-reset" class="button ghost">Reset</button>
+    </div>
+    <p id="viewer-price" class="viewer-price"></p>
+    <div id="viewer-actions" class="viewer-actions"></div>
+  </dialog>
+  <button type="button" id="to-top" class="to-top" aria-label="Back to top" hidden>&#8593;</button>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

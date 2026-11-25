@@ -1,0 +1,260 @@
+/* store.css: layout extras for the new homepage. It loads after style.css. */
+
+/* 1. Info strip */
+.demo-strip { padding: 0.45rem var(--gutter); background: #2a1f5c; color: #fff; font-size: 0.9rem; text-align: center; }
+
+/* 2. Header and Shop menu */
+.shop .topbar { flex-wrap: wrap; gap: 0.25rem 1rem; }
+.shop .topbar nav { flex-wrap: wrap; gap: 0.2rem 1.5rem; }
+.shop .menu { position: relative; }
+.shop .menu summary { padding: 0.5rem 0; color: var(--muted); font-weight: 600; list-style: none; cursor: pointer; }
+.shop .menu summary::-webkit-details-marker { display: none; }
+.shop .menu summary::after { content: " \25BE"; }
+.shop .menu summary:hover, .shop .menu[open] summary { color: var(--accent); }
+.shop .mega {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  width: min(38rem, calc(100vw - 2rem));
+  padding: 1.25rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 14px 34px rgba(60, 30, 120, 0.25);
+}
+.shop .mega h3 { margin: 0 0 0.4rem; font-size: 1rem; color: var(--accent); }
+.shop .topbar .mega a { display: block; padding: 0.35rem 0; color: var(--text); }
+.shop .topbar .mega a:hover { color: var(--pink); }
+
+/* 4. Promo cards */
+.promos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr)); gap: 1rem; max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 0; }
+.shop .promo { padding: 1.5rem; color: #fff; background: linear-gradient(135deg, #5b3fd1, #c2185b); border-radius: 20px; }
+.shop .promo-2 { background: linear-gradient(135deg, #0b6e7f, #1f5a3d); }
+.shop .promo h2 { margin: 0 0 0.4rem; color: #fff; }
+.shop .promo p { margin: 0; }
+.shop .promo .button { margin: 1rem 0.5rem 0 0; }
+
+/* 5. Category tiles */
+.cats { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 0; }
+.cats h2 { margin-bottom: 0; }
+.cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 1fr)); gap: 0.8rem; margin-top: 1rem; }
+.shop .cat-tile { display: flex; align-items: center; justify-content: center; min-height: 5rem; padding: 1rem; color: var(--text); font-weight: 800; text-align: center; text-decoration: none; background: #fff0f7; border-radius: 16px; }
+.shop .cat-tile:nth-child(4n+2) { background: #fff8e1; }
+.shop .cat-tile:nth-child(4n+3) { background: #e8fbf3; }
+.shop .cat-tile:nth-child(4n+4) { background: #eaf4ff; }
+.shop .cat-tile:hover { outline: 3px solid var(--accent); }
+
+/* 7. Product cards */
+.shop .list .product-img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: contain; margin-bottom: 0.75rem; background: #fff; border-radius: 10px; }
+.shop .list .tag { display: inline-block; margin-bottom: 0.35rem; padding: 0.1rem 0.6rem; font-size: 0.8rem; font-weight: 700; color: var(--accent); background: #fff; border-radius: 999px; }
+.shop .list .price { margin: 0.5rem 0 0; font-size: 1.15rem; font-weight: 800; }
+.shop .list .old { margin-left: 0.5rem; font-size: 0.9rem; font-weight: 400; color: var(--muted); text-decoration: line-through; }
+.shop .list .button { margin-top: 0.75rem; padding: 0.5rem 1.2rem; }
+.shop .list .actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+/* 8. Footer */
+.foot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr)); gap: 1.5rem; }
+.shop footer h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+.shop footer p { margin: 0; }
+.shop footer ul { margin: 0; padding: 0; list-style: none; }
+.shop footer li { margin: 0.25rem 0; }
+.shop footer .foot-note { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.3); }
+
+@media (max-width: 700px) {
+  .shop .menu { position: static; }
+  .shop .mega { left: 1rem; right: 1rem; width: auto; transform: none; grid-template-columns: 1fr 1fr; }
+  .shop .mega-note { display: none; }
+  .promos, .cats { padding: 1.75rem 1rem 0; }
+}
+/* ================= DARK THEME, ANIME BACKGROUND, CLEARER BUTTONS ================= */
+
+/* Darker page */
+body.shop { background: linear-gradient(180deg, #120d2b 0%, #1a1240 55%, #0d1a2c 100%) fixed; }
+
+/* Anime background layer: fades in when an anime is chosen */
+body.shop::before {
+  opacity: 1;
+  background:
+    linear-gradient(rgba(12, 9, 30, 0.5), rgba(12, 9, 30, 0.5)),
+    url('images/night-temple.jpeg') center / cover no-repeat;
+}
+body.shop.has-anime::before { opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  body.shop::before { transition: opacity 0.6s; }
+}
+
+/* Dark top bar */
+.shop .topbar {
+  background:
+    linear-gradient(90deg, #ff5fa2, #ffc93c, #2ecc9a, #3ea6ff, #8b6cf0) bottom / 100% 4px no-repeat,
+    rgba(16, 12, 38, 0.94);
+}
+.shop .brand { color: #ffd23f; }
+.shop .topbar nav a, .shop .topbar .menu summary { color: #f1eeff; }
+.shop .topbar nav a:hover, .shop .topbar .menu summary:hover, .shop .topbar .menu[open] summary { color: #ffd23f; }
+
+/* Dark hero with light text */
+.shop .hero {
+  background:
+    linear-gradient(90deg, rgba(14, 10, 35, 0.92) 0%, rgba(14, 10, 35, 0.7) 50%, rgba(14, 10, 35, 0.25) 100%),
+    url('images/background.jpeg') center / cover no-repeat;
+}
+.shop .hero h1 { color: #fff; }
+.shop .hero .note { color: #f1eeff; }
+@media (max-width: 700px) {
+  .shop .hero {
+    background:
+      linear-gradient(rgba(14, 10, 35, 0.82), rgba(14, 10, 35, 0.82)),
+      url('images/background.jpeg') center / cover no-repeat;
+  }
+}
+
+/* Light headings and notes where text sits straight on the dark page */
+.shop .cats h2, .shop .anime h2, .shop .info h2 { color: #fff; }
+.shop .anime .note { color: #e6e1ff; }
+
+/* Anime cards are buttons now */
+.shop .anime-card {
+  display: block;
+  width: 100%;
+  font: inherit;
+  text-align: left;
+  color: var(--text);
+  cursor: pointer;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+.shop .anime-card:hover { transform: translateY(-3px); }
+.shop .anime-card[aria-pressed="true"] { outline: 4px solid #ffd23f; outline-offset: 3px; background: #fff8e1; }
+.shop .anime-card[aria-pressed="true"] h3::after { content: " \2713 Selected"; font-size: 0.85rem; color: #1f5a3d; }
+#anime-status { min-height: 1.6em; font-weight: 700; }
+
+/* CLEARER BUTTONS: big, bold, thick outline, high contrast */
+.shop .button, .shop button.button {
+  min-height: 3rem;
+  padding: 0.75rem 1.6rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #1a1033;
+  background: #ffd23f;
+  border: 3px solid #1a1033;
+  border-radius: 14px;
+  box-shadow: 0 4px 0 #1a1033;
+  text-decoration: none;
+}
+.shop .button:hover { filter: none; background: #ffe066; transform: translateY(-2px); }
+.shop .button:active { transform: translateY(2px); box-shadow: 0 1px 0 #1a1033; }
+.shop .button.ghost { color: #2b1580; background: #fff; border: 3px solid #2b1580; box-shadow: 0 4px 0 #2b1580; }
+.shop .button.ghost:hover { background: #efeaff; }
+
+.shop .cart-btn { min-height: 2.75rem; padding: 0.3rem 1.1rem; font-size: 1rem; font-weight: 800; color: #1a1033; background: #ffd23f; border: 3px solid #1a1033; border-radius: 14px; }
+.shop .view-btn, #gallery-close, #cart-close, .shop .cart-list button {
+  min-height: 3rem;
+  padding: 0.5rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #1a1033;
+  background: #fff;
+  border: 3px solid #1a1033;
+  border-radius: 14px;
+}
+.to-top { width: 3.5rem; height: 3.5rem; color: #1a1033; background: #ffd23f; border: 3px solid #1a1033; box-shadow: 0 4px 0 #1a1033; }
+.shop select { min-height: 3rem; font-size: 1rem; font-weight: 700; border: 3px solid #2b1580; border-radius: 14px; }
+.shop .list .button { min-height: 3rem; font-size: 1rem; }
+.shop .cat-tile { font-size: 1.1rem; border: 3px solid #1a1033; box-shadow: 0 4px 0 #1a1033; }
+.shop .cat-tile:hover { outline: 4px solid #ffd23f; }
+
+/* Focus outline that shows on dark and light areas */
+.shop a:focus-visible, .shop button:focus-visible, .shop select:focus-visible, .shop summary:focus-visible {
+  outline: 3px solid #1a5fb4;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px #fff;
+}
+/* ================= 3D TILT ON PRODUCT CARDS ================= */
+
+.shop .list li {
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease-out, box-shadow 0.25s ease;
+}
+.shop .list li > * { transition: transform 0.25s ease; }
+
+/* Shine that follows the mouse */
+.shop .list li::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.4), transparent 55%);
+  transition: opacity 0.25s;
+}
+
+/* Mouse devices that allow animation: tilt, pop forward, shine */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .shop .list li:hover,
+  .shop .list li:focus-within {
+    z-index: 5;
+    transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) scale(1.05);
+    box-shadow: 0 0 0 3px #ffd23f, 0 22px 40px rgba(0, 0, 0, 0.5);
+  }
+  .shop .list li:hover::after { opacity: 1; }
+  .shop .list li:hover .product-img { transform: translateZ(45px); }
+  .shop .list li:hover strong { transform: translateZ(30px); }
+  .shop .list li:hover .price,
+  .shop .list li:hover .actions { transform: translateZ(35px); }
+}
+
+/* People who turned animations off just get the yellow outline */
+@media (hover: hover) and (prefers-reduced-motion: reduce) {
+  .shop .list li:hover { box-shadow: 0 0 0 3px #ffd23f; }
+}
+/* ================= SINGLE-ITEM VIEWER ================= */
+
+.shop .viewable { cursor: pointer; }
+
+.shop #viewer { width: min(44rem, calc(100vw - 2rem)); }
+#viewer-close { min-height: 3rem; padding: 0.5rem 1.25rem; font-size: 1rem; font-weight: 800; color: #1a1033; background: #fff; border: 3px solid #1a1033; border-radius: 14px; cursor: pointer; }
+
+/* The stage gives the 3D depth, the frame tilts, the picture zooms inside the frame */
+.viewer-stage { margin-bottom: 0.75rem; perspective: 900px; }
+.viewer-frame {
+  height: min(55vh, 30rem);
+  overflow: hidden;
+  background: #fff;
+  border: 3px solid #1a1033;
+  border-radius: 16px;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  cursor: zoom-in;
+}
+.viewer-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scale(var(--zoom, 1));
+  transform-origin: var(--ox, 50%) var(--oy, 50%);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .viewer-frame { transition: transform 0.12s ease-out; }
+  .viewer-frame img { transition: transform 0.2s ease; }
+}
+
+.viewer-hint { margin: 0 0 0.75rem; text-align: center; }
+.viewer-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.6rem; margin-bottom: 1rem; }
+.zoom-level { min-width: 4rem; font-weight: 800; text-align: center; }
+.viewer-price { margin: 0 0 0.75rem; font-size: 1.25rem; font-weight: 800; text-align: center; }
+.viewer-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; }
+.viewer-actions .button { margin-top: 0; }
+
+/* Greyed-out buttons at the zoom limits */
+.shop .button:disabled { opacity: 0.45; cursor: not-allowed; transform: none; box-shadow: none; }

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Text on the browser tab -->
+  <title>Checkout | Senpai Shelf</title>
+  <link rel="icon" href="data:,">
+
+  <!-- Uses the same design file as the shop, so both pages match -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- The same shop design as the main page -->
+<body class="shop">
+  <a class="skip-link" href="#main">Skip to the main content</a>
+
+  <!-- TOP BAR: this time both links lead back to the shop page -->
+  <header class="topbar">
+    <a class="brand" href="index.html">Senpai Shelf</a>
+    <nav aria-label="Main">
+      <a href="index.html">Back to shop</a>
+    </nav>
+  </header>
+
+  <main id="main" class="checkout">
+    <h1>Checkout</h1>
+
+    <!-- A reminder that nothing real is bought on this page -->
+    <p class="note">This is a demo checkout for a course project. No real payment is taken.</p>
+
+    <!-- YOUR ORDER: checkout.js fills in the item name and price it receives from the shop page -->
+    <section class="card summary" aria-labelledby="summary-title">
+      <h2 id="summary-title">Your order</h2>
+      <p><strong id="order-item">No item chosen</strong></p>
+      <p id="order-price"></p>
+    </section>
+
+    <!-- THE FORM: where the customer chooses how and when to pay -->
+    <form id="checkout-form" class="card" novalidate>
+
+      <!-- Question 1: when to pay. Radio buttons let you pick only one option.
+           The same name="timing" groups them, and "checked" means chosen at the start -->
+      <fieldset>
+        <legend>When will you pay?</legend>
+        <label><input type="radio" name="timing" value="before" checked> Pay now, before delivery</label>
+        <label><input type="radio" name="timing" value="delivery"> Pay on delivery</label>
+      </fieldset>
+
+      <!-- Question 2: how to pay. checkout.js switches Cash off when the customer picks "pay now" -->
+      <fieldset>
+        <legend>How will you pay?</legend>
+        <label><input type="radio" name="method" value="mobile" checked> Mobile money (M-Pesa)</label>
+        <label><input type="radio" name="method" value="card"> Card</label>
+        <label id="cash-option"><input type="radio" name="method" value="cash"> Cash <span class="hint">(pay on delivery only)</span></label>
+      </fieldset>
+
+      <!-- A short note that changes depending on what the customer picks above -->
+      <p id="method-note" class="hint" role="status" aria-live="polite"></p>
+
+      <!-- Three boxes for the customer to type in.
+           The label's "for" matches the box's "id", so clicking the label selects the box -->
+      <div class="field">
+        <label for="name">Full name</label>
+        <input id="name" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="phone">Phone number</label>
+        <!-- type="tel" shows the number keypad on phones -->
+        <input id="phone" type="tel" autocomplete="tel" placeholder="0712 345 678" required>
+      </div>
+      <div class="field">
+        <label for="address">Delivery address</label>
+        <input id="address" autocomplete="street-address" placeholder="Estate, street, town" required>
+      </div>
+
+      <!-- Empty line where checkout.js shows a problem, for example "Please fill in your name" -->
+      <p id="form-error" class="status" data-kind="error" role="alert"></p>
+
+      <!-- Sends the form. checkout.js checks the boxes first, then shows the thank-you message -->
+      <button type="submit" class="button">Place order</button>
+    </form>
+
+    <!-- THANK-YOU MESSAGE: "hidden" keeps it out of sight until the order is placed -->
+    <section id="confirmation" class="card" aria-labelledby="confirm-title" hidden>
+      <h2 id="confirm-title" tabindex="-1">Order placed</h2>
+
+      <!-- checkout.js writes the summary of the order here -->
+      <p id="confirm-text"></p>
+
+      <a class="button" href="index.html">Back to the shop</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>Made by Enock for Trailblazer: AI Product Studio.</p>
+  </footer>
+
+  <!-- Connects the actions file for this page -->
+  <script type="module" src="checkout.js"></script>
+</body>
+</html>

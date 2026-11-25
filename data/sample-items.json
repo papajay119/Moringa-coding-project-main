@@ -1,0 +1,53 @@
+{
+  "_note": "Made up for this course. Replace these items with your team's own data.",
+  "items": [
+    {
+      "id": 1,
+      "title": "Poster set",
+      "detail": "3 prints, KSh 2,300.",
+      "category": "posters",
+      "background": "images/bg-posters.jpeg",
+      "gallery": [
+        { "title": "Toji manga collage", "image": "images/poster-1.jpeg", "price": "KSh 900" },
+        { "title": "Gojo manga collage", "image": "images/poster-2.jpeg", "price": "KSh 900" },
+        { "title": "Jujutsu Kaisen key art", "image": "images/poster-3.jpeg", "price": "KSh 900" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Acrylic standee",
+      "detail": "KSh 1,550.",
+      "category": "standees",
+      "background": "images/bg-standee.jpeg",
+      "gallery": [
+        { "title": "Rengoku standee", "image": "images/standee-1.jpeg", "price": "KSh 1,550" },
+        { "title": "Tanjiro and Nezuko standee", "image": "images/standee-2.jpeg", "price": "KSh 1,550" },
+        { "title": "Muichiro Tokito standee", "image": "images/standee-3.jpeg", "price": "KSh 1,550" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Enamel pin pack",
+      "detail": "4 pins, KSh 1,300.",
+      "category": "pins",
+      "background": "images/bg-pins.jpeg",
+      "gallery": [
+        { "title": "Hero pins", "image": "images/pins-1.jpeg", "price": "KSh 1,300" },
+        { "title": "Portrait pins", "image": "images/pins-2.jpeg", "price": "KSh 1,300" },
+        { "title": "Winter gear pins", "image": "images/pins-3.jpeg", "price": "KSh 1,300" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Oversized hoodie",
+      "detail": "Sizes S to XXL, from KSh 5,500.",
+      "category": "hoodies",
+      "background": "images/bg-hoodies.jpeg",
+      "gallery": [
+        { "title": "Zaraki black hoodie", "image": "images/hoodie-1.jpeg", "price": "KSh 5,800" },
+        { "title": "Ichigo black hoodie", "image": "images/hoodie-2.jpeg", "price": "KSh 5,500" },
+        { "title": "Bankai white hoodie", "image": "images/hoodie-3.jpeg", "price": "KSh 6,200" }
+      ]
+    }
+  ]
+}
